@@ -45,11 +45,22 @@ pipeline {
             }
         }
         stage("Create docker image") {
+            when {
+                branch 'main'  
+            }
             steps {
                 echo " ============== start building image =================="
                 dir ('./') {
-                	sh 'docker build -t vasilvedev/toolbox:latest . '
+                    sh 'docker build -t vasilvedev/toolbox:latest . '
                 }
+            }
+        }
+        stage("Docker push") {
+            steps {
+                echo " ============== start pushing image =================="
+                sh '''
+                docker push vasilvedev/toolbox:latest
+                '''
             }
         }
         stage('Deploy for production') {
@@ -57,8 +68,6 @@ pipeline {
                 branch 'main'  
             }
             steps {
-           //     sh 'pwd'
-           //   sh 'du -a'
                 sh './jenkins/scripts/deploy-for-production.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh './jenkins/scripts/kill.sh'
