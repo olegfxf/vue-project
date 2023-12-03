@@ -28,7 +28,7 @@ echo 'is followed by another command that retrieves the process ID (PID) value'
 echo 'of the previously run process (i.e. "serve") and writes this value to'
 echo 'the file ".pidfile".'
 set -x
-npm run dev -- --port 3000
+npm run dev -- --port 3000 &
 # serve -s build -l 3000 &
 #./node_modules/serve/build/main.js -s build -l 3000 &
 echo $! > .pidfile
