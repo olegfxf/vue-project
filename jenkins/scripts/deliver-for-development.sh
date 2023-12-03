@@ -9,7 +9,7 @@ echo 'is followed by another command that retrieves the process ID (PID) value'
 echo 'of the previously run process (i.e. "npm start") and writes this value to'
 echo 'the file ".pidfile".'
 set -x
-npm run dev -- --port 3000
+npm run dev -- --port 3000 &
 #npm start &
 echo $! > .pidfile
 set +x
