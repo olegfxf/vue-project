@@ -31,7 +31,10 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
-        stage("docker login") {
+        stage("Docker login") {
+            when {
+                branch 'main'  
+            }       
             steps {
                 echo " ============== docker login =================="
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
