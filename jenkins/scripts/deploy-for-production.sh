@@ -32,6 +32,7 @@ npm run dev -- --port 3000 &
 # serve -s build -l 3000 &
 #./node_modules/serve/build/main.js -s build -l 3000 &
 echo $! > .pidfile
+cat .pidfile
 set +x
 
 echo 'Now...'
