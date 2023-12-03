@@ -56,6 +56,9 @@ pipeline {
             }
         }
         stage("Docker push") {
+            when {
+                branch 'main' 
+            }
             steps {
                 echo " ============== start pushing image =================="
                 sh '''
