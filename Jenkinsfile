@@ -44,6 +44,14 @@ pipeline {
                 }
             }
         }
+        stage("Create docker image") {
+            steps {
+                echo " ============== start building image =================="
+                dir ('./') {
+                	sh 'docker build -t vasilvedev/toolbox:latest . '
+                }
+            }
+        }
         stage('Deploy for production') {
             when {
                 branch 'main'  
