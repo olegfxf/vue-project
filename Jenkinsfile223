@@ -6,7 +6,7 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
         timestamps()
     }
-    tools {nodejs "nodejs-21.3.0"}
+    tools {nodejs "node"}
     environment {
         CI = 'true'
     }
