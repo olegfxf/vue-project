@@ -1,8 +1,21 @@
 FROM node:21.3.0
+# устанавливаем простой HTTP-сервер для статики
+RUN npm install -g http-server
+
+# делаем каталог 'app' текущим рабочим каталогом
 WORKDIR /app
-ENV PORT 3000
-EXPOSE ${PORT}
-COPY . /app
+
+# копируем оба 'package.json' и 'package-lock.json' (если есть)
+COPY package*.json ./
+
+# устанавливаем зависимости проекта
+RUN npm install
+
+# копируем файлы и каталоги проекта в текущий рабочий каталог (т.е. в каталог 'app')
+COPY . .
+
+# собираем приложение для production с минификацией
 RUN npm run build
-RUN npm install serve
-CMD ["npm", "run", "dev", "--", "--port", "3000", "&"]
+
+EXPOSE 8080
+CMD [ "http-server", "dist" ]
