@@ -51,7 +51,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('./') {
-                    sh 'docker build -t vasilvedev/toolbox:latest . '
+                    sh 'docker build -t vasilvedev/vue-project:latest . '
                 }
             }
         }
@@ -62,7 +62,7 @@ pipeline {
             steps {
                 echo " ============== start pushing image =================="
                 sh '''
-                docker push vasilvedev/toolbox:latest
+                docker push vasilvedev/vue-project:latest
                 '''
             }
         }
