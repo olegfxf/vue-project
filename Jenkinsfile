@@ -1,9 +1,11 @@
 properties([disableConcurrentBuilds()])
 pipeline {
-
     agent any
     triggers { pollSCM('* * * * *') }
-    
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+        timestamps()
+    }
     tools {nodejs "node"}
     environment {
         CI = 'true'
