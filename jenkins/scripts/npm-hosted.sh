@@ -21,13 +21,13 @@
 #npm publish ./ --registry=http://192.168.1.39:8081/repository/npm-hosted/ --non-interactive --verbose
 
 
-// Initialize package.json
-npm init 
+#// Initialize package.json
+#npm init 
 
- // log in 
+# // log in 
 npm login --registry=http://localhost:8081/repository/npm-hosted/
 
- // publish
+# // publish
 npm publish --registry=http://localhost:8081/repository/npm-hosted/
 
 
