@@ -23,6 +23,7 @@
 
 #// Initialize package.json
 #npm init 
+npm install -g npm@6
 
 # // log in 
 npm login --registry=http://localhost:8081/repository/npm-hosted/
