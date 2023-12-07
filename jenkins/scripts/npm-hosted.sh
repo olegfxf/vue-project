@@ -17,5 +17,18 @@
 #npm-cli-login -u admin -p 123 -e nick@foo.bar -r http://192.168.1.39:8081/repository/npm-hosted/
 #npm publish --registry http://192.168.1.39:8081/repository/npm-hosted/
 
-npm-cli-login -u admin -p 123 -e nick@foo.bar -r http://192.168.1.39:8081/repository/npm-hosted/
-npm publish ./ --registry=http://192.168.1.39:8081/repository/npm-hosted/ --non-interactive --verbose
+#npm-cli-login -u admin -p 123 -e nick@foo.bar -r http://192.168.1.39:8081/repository/npm-hosted/
+#npm publish ./ --registry=http://192.168.1.39:8081/repository/npm-hosted/ --non-interactive --verbose
+
+
+// Initialize package.json
+npm init 
+
+ // log in 
+npm login --registry=http://localhost:8081/repository/npm-hosted/
+
+ // publish
+npm publish --registry=http://localhost:8081/repository/npm-hosted/
+
+
+
