@@ -13,11 +13,11 @@ pipeline {
         CI = 'true'
     }
     stages {
-        stage('Create') {
-            steps {
-                sh 'npm create vite@latest my-vue-app -- --template vue-ts'
-            }
-        }
+//        stage('Create') {
+//            steps {
+//                sh 'npm create vite@latest my-vue-app -- --template vue-ts'
+//            }
+//        }
         stage('Build') {
             steps {
                 sh './jenkins/scripts/build.sh'
