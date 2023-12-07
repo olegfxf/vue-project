@@ -10,7 +10,8 @@
 npm config set registry http://192.168.1.39:8081/repository/npm-hosted/
 npm config set _auth YWRtaW46MTIzCg==
 #npm publish
-npm login --auth-type=legacy  --registry=http://192.168.1.39:8081/repository/npm-hosted/
+#npm login --auth-type=legacy --registry=http://192.168.1.39:8081/repository/npm-hosted/
+npm-cli-login -u admin -p 123 -e adm@foo.bar -r http://192.168.1.39:8081/repository/npm-hosted/ --verbose
 npm publish ./ --registry=http://192.168.1.39:8081/repository/npm-hosted/ --non-interactive --verbose
 
 
