@@ -10,6 +10,7 @@ echo 'installing this dependency, it would typically be done so using this'
 echo 'flag. For a comprehensive explanation about "devDependencies", see'
 echo 'https://stackoverflow.com/questions/18875674/whats-the-difference-between-dependencies-devdependencies-and-peerdependencies.'
 set -x
+#npm config set registry https://registry.npmjs.org
 npm config set registry http://192.168.1.39:8081/repository/npm-images/
 npm login -u admin -p 123 127.0.0.1:8081
 npm install # --save-dev cross-env
