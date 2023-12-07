@@ -83,14 +83,5 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
-        stage('NPM hosted') {
-            when {
-                branch 'main'  
-            }
-            steps {
-                sh './jenkins/scripts/npm-hosted.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-            }
-        }
     }
 }
