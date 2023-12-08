@@ -26,5 +26,9 @@
     "prettier": "^3.0.3",
     "vite": "^4.4.11",
     "vitest": "^0.34.6"
-  }
+  },
+  "description": "This template should help get you started developing with Vue 3 in Vite.",
+  "main": "vite.config.js",
+  "author": "",
+  "license": "ISC"
 }
