@@ -96,8 +96,8 @@ pipeline {
                 branch 'main'  
             }
             steps {
-            sh "/bin/bash ./jenkins/scripts/npm-hosted.sh qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
-                sh './jenkins/scripts/npm-hosted.sh'
+            sh "/bin/bash ./jenkins/scripts/npm-hosted.sh $IMAGE"
+//                sh './jenkins/scripts/npm-hosted.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }
