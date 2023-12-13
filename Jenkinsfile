@@ -11,9 +11,9 @@ pipeline {
     tools {nodejs "nodejs-21.3.0"}
     environment {
         CI = 'true'
-        NAME = "myapp"
-        VERSION = "${env.BUILD_ID}-${env.GIT_COMMIT}"
-        IMAGE = "${NAME}:${VERSION}"
+        NAME = "vue-project"
+        VERSION = "${env.BUILD_ID}"  // -${env.GIT_COMMIT}
+        IMAGE = "${NAME}-${VERSION}.tgz"
     }
     stages {
 //        stage('Create') {
