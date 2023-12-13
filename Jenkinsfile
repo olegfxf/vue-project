@@ -96,7 +96,7 @@ pipeline {
                 branch 'main'  
             }
             steps {
-                sh './jenkins/scripts/npm-hosted.sh ${env.BUILD_ID}'
+                sh './jenkins/scripts/npm-hosted.sh' ${env.BUILD_ID}
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }
