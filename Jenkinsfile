@@ -11,6 +11,9 @@ pipeline {
     tools {nodejs "nodejs-21.3.0"}
     environment {
         CI = 'true'
+        NAME = "myapp"
+        VERSION = "${env.BUILD_ID}-${env.GIT_COMMIT}"
+        IMAGE = "${NAME}:${VERSION}"
     }
     stages {
 //        stage('Create') {
@@ -20,7 +23,7 @@ pipeline {
 //        }
         stage('Example') {
             steps {
-                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                 echo "Running ${env.BUILD_ID} on ${env.VERSION}"
             }
         }
         stage('Build') {
@@ -93,7 +96,7 @@ pipeline {
                 branch 'main'  
             }
             steps {
-                sh './jenkins/scripts/npm-hosted.sh'
+                sh './jenkins/scripts/npm-hosted.sh ${env.BUILD_ID}'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }

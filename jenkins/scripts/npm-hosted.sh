@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+echo $1
 
 npm version 1.2.4
 npm pack
