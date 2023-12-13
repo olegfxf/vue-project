@@ -25,7 +25,7 @@ pipeline {
             steps {
                  echo "Running ${env.BUILD_ID} on ${env.VERSION}"
             }
-        }        
+        }
         stage('Build') {
             steps {
                 sh './jenkins/scripts/build.sh'
@@ -96,10 +96,8 @@ pipeline {
                 branch 'main'  
             }
             steps {
-                        script {
-            ./jenkins/scripts/npm-hosted.sh @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            }
-         //       sh './jenkins/scripts/npm-hosted.sh'
+            sh "/bin/bash ./jenkins/scripts/npm-hosted.sh qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
+                sh './jenkins/scripts/npm-hosted.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }
