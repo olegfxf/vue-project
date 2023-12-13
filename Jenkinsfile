@@ -18,12 +18,14 @@ pipeline {
 //                sh 'npm create vite@latest my-vue-app -- --template vue-ts'
 //            }
 //        }
+        stage('Example') {
+            steps {
+                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+            }
+        }
         stage('Build') {
             steps {
-            script {
-                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 ./jenkins/scripts/build.sh
-            }
             }
         }
         stage('Test') {
