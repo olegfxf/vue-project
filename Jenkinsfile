@@ -20,12 +20,10 @@ pipeline {
 //        }
         stage('Build') {
             steps {
-            step {
+            script {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                }
-                step {
-                sh './jenkins/scripts/build.sh'
-                }
+                ./jenkins/scripts/build.sh
+            }
             }
         }
         stage('Test') {
