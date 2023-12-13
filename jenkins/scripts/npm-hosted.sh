@@ -6,6 +6,7 @@ echo $1
 npm version $1
 npm pack
 export paramF=npm.asset=@vue-project-$1.tgz\;type=application/x-compressed
+echo $paramF
 curl -u admin:123 -X POST "http://localhost:8081/service/rest/v1/components?repository=npm-hosted" -H "accept: application/json" -H "Content-Type: multipart/form-data" -F $paramF
 
 
