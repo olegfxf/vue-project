@@ -3,7 +3,7 @@
 echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
 echo $1
 
-npm version $1
+npm version 1.2.4
 npm pack
 #paramF=npm.asset=@vue-project-$1.tgz\;type=application/x-compressed
 #echo $paramF
