@@ -97,7 +97,8 @@ pipeline {
             }
             steps {
             echo sh(script: "grep \"version\" package.json | cut -d '\"' -f4 | tr -d '[[:space:]]'", returnStdout: true)
-            sh "/bin/bash ./jenkins/scripts/npm-hosted.sh $VERSION"
+            //sh "/bin/bash ./jenkins/scripts/npm-hosted.sh $VERSION"
+            sh "/bin/bash ./jenkins/scripts/npm-hosted.sh sh(script: "grep \"version\" package.json | cut -d '\"' -f4 | tr -d '[[:space:]]'", returnStdout: true)"
 //                sh './jenkins/scripts/npm-hosted.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
