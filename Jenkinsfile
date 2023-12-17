@@ -99,16 +99,17 @@ pipeline {
             }
         }
         stage('NPM hosted') {
-            when {
-                branch 'main'  
+            environment {
+               VERSION = sh(script: "grep \"version\" package.json | cut -d '\"' -f4 | tr -d '[[:space:]]'", returnStdout: true)
             }
+//            when {
+//                branch 'main'  
+//            }
             steps {
-               script {
-                def response =  """sh(script: "grep \"version\" package.json | cut -d '\"' -f4 | tr -d '[[:space:]]'", returnStdout: true)"""
-                ./jenkins/scripts/npm-hosted.sh response
+            echo sh(script: "grep \"version\" package.json | cut -d '\"' -f4 | tr -d '[[:space:]]'", returnStdout: true)
+            sh "/bin/bash ./jenkins/scripts/npm-hosted.sh $VERSION"
 //                sh './jenkins/scripts/npm-hosted.sh'
 //                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-              }
             }
         }
     }
