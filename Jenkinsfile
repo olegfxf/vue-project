@@ -21,6 +21,12 @@ pipeline {
 //                sh 'npm create vite@latest my-vue-app -- --template vue-ts'
 //            }
 //        }
+//        stage('Build123') {
+//            steps {
+//                checkout scm
+//                sh 'npm install'
+//            }
+//        }
         stage('Example') {
             steps {
                  echo "Running ${env.BUILD_ID} on ${env.VERSION}"
@@ -28,6 +34,7 @@ pipeline {
         }
         stage('Build') {
             steps {
+                checkout scm
                 sh './jenkins/scripts/build.sh'
             }
         }
@@ -96,11 +103,12 @@ pipeline {
                 branch 'main'  
             }
             steps {
-            echo sh(script: "grep \"version\" package.json | cut -d '\"' -f4 | tr -d '[[:space:]]'", returnStdout: true)
-            //sh "/bin/bash ./jenkins/scripts/npm-hosted.sh $VERSION"
-            sh "/bin/bash ./jenkins/scripts/npm-hosted.sh `sh(script: "grep \"version\" package.json | cut -d '\"' -f4 | tr -d '[[:space:]]'", returnStdout: true)`"
+               script {
+                def response =  sh(script: "grep \"version\" package.json | cut -d '\"' -f4 | tr -d '[[:space:]]'", returnStdout: true)
+                ./jenkins/scripts/npm-hosted.sh response
 //                sh './jenkins/scripts/npm-hosted.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+//                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+              }
             }
         }
     }
