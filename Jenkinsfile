@@ -14,6 +14,7 @@ pipeline {
         NAME = "vue-project"
         VERSION = "${env.BUILD_ID}"  // -${env.GIT_COMMIT}
         IMAGE = "${NAME}-${VERSION}.tgz"
+        PACKAGE_VERSION = ""
     }
     stages {
 //        stage('Create') {
@@ -96,9 +97,9 @@ pipeline {
                 branch 'main'  
             }
             steps {
-            PACKAGE_VERSION=sh(script: "grep \"version\" package.json | cut -d '\"' -f4 | tr -d '[[:space:]]'", returnStdout: true)
+            PACKAGE_VERSION = sh(script: "grep \"version\" package.json | cut -d '\"' -f4 | tr -d '[[:space:]]'", returnStdout: true)
             echo "Current package version: $PACKAGE_VERSION"
-            sh "/bin/bash ./jenkins/scripts/npm-hosted.sh $VERSION"
+            sh "/bin/bash ./jenkins/scripts/npm-hosted.sh $PACKAGE_VERSION"
 //                sh './jenkins/scripts/npm-hosted.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
