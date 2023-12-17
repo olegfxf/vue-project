@@ -96,7 +96,7 @@ pipeline {
                 branch 'main'  
             }
             steps {
-            sh(script: "grep \"version\" package.json | cut -d '\"' -f4 | tr -d '[[:space:]]'", returnStdout: true)
+            PACKAGE_VERSION=sh(script: "grep \"version\" package.json | cut -d '\"' -f4 | tr -d '[[:space:]]'", returnStdout: true)
             echo "Current package version: $PACKAGE_VERSION"
             sh "/bin/bash ./jenkins/scripts/npm-hosted.sh $VERSION"
 //                sh './jenkins/scripts/npm-hosted.sh'
