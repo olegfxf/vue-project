@@ -96,6 +96,8 @@ pipeline {
                 branch 'main'  
             }
             steps {
+            PACKAGE_VERSION = sh returnStdout: true, script: '''grep 'version' package.json | cut -d '"' -f4 | tr '\n' '\0''''
+            echo "Current package version: $PACKAGE_VERSION"
             sh "/bin/bash ./jenkins/scripts/npm-hosted.sh $VERSION"
 //                sh './jenkins/scripts/npm-hosted.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
