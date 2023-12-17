@@ -104,7 +104,7 @@ pipeline {
             }
             steps {
                script {
-                def response =  sh(script: "grep \"version\" package.json | cut -d '\"' -f4 | tr -d '[[:space:]]'", returnStdout: true)
+                def response =  """sh(script: "grep \"version\" package.json | cut -d '\"' -f4 | tr -d '[[:space:]]'", returnStdout: true)"""
                 ./jenkins/scripts/npm-hosted.sh response
 //                sh './jenkins/scripts/npm-hosted.sh'
 //                input message: 'Finished using the web site? (Click "Proceed" to continue)'
