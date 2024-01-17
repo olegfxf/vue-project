@@ -105,7 +105,7 @@ pipeline {
                 branch 'dev'
 //                expression { env.PLANET == 'Mars' }
                 triggeredBy 'ParameterizedTimerTriggerCause'
-                environment name: 'PLANET', value: 'Mars'
+//                environment name: 'PLANET', value: 'Mars'
             }
             steps {
                 sh './jenkins/scripts/deploy-for-production.sh'
