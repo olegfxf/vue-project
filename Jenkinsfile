@@ -1,4 +1,8 @@
-properties([disableConcurrentBuilds()])
+properties([disableConcurrentBuilds()
+        pipelineTriggers([
+            pollSCM("H/5 * * * *")
+        ])
+])
 pipeline {
     agent {
         label 'master'
