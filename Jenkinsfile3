@@ -3,16 +3,7 @@ pipeline {
     agent {
         label 'master'
     }
-    triggers { 
-        pollSCM('* * * * *')
-        
-        parameterizedCron('''
-            # leave spaces where you want them around the parameters. They'll be trimmed.
-            # we let the build run with the default name
-            */2 * * * * %GREETING=Hola;PLANET=Pluto
-            */3 * * * * %PLANET=Mars
-        ''')
-    }
+    triggers { pollSCM('* * * * *') }
     options {
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
         timestamps()
