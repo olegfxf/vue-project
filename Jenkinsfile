@@ -4,13 +4,13 @@ pipeline {
         label 'master'
     }
     triggers { 
-        pollSCM('* * * * *')
+//        pollSCM('* * * * *')
         
         parameterizedCron('''
             # leave spaces where you want them around the parameters. They'll be trimmed.
             # we let the build run with the default name
             #*/2 * * * * %GREETING=Hola;PLANET=Pluto
-            */5 * * * * %PLANET=Mars
+            */2 * * * * %PLANET=Mars
         ''')
     }
     options {
@@ -108,6 +108,7 @@ pipeline {
 //                environment name: 'PLANET', value: 'Mars'
             }
             steps {
+                echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
                 sh './jenkins/scripts/deploy-for-production.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh './jenkins/scripts/kill.sh'
