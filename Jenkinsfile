@@ -1,4 +1,4 @@
-properties([disableConcurrentBuilds()
+properties(
         pipelineTriggers([
             pollSCM("H/5 * * * *")
         ])
