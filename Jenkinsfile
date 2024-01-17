@@ -1,13 +1,16 @@
-properties(
+//properties([disableConcurrentBuilds()])
+if (env.BRANCH_NAME == "master") {
+    properties([
         pipelineTriggers([
-            pollSCM("H/5 * * * *")
+            pollSCM("* * * * *")
         ])
-])
+    ])
+}
 pipeline {
     agent {
         label 'master'
     }
-    triggers { pollSCM('* * * * *') }
+//    triggers { pollSCM('* * * * *') }
     options {
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
         timestamps()
