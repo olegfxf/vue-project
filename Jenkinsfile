@@ -102,7 +102,7 @@ pipeline {
         stage('Deploy for production') {
             when {
                 branch 'main'
-                expression { env.PLANET == 'Mars'
+                expression { env.PLANET == 'Mars' }
             }
             steps {
                 sh './jenkins/scripts/deploy-for-production.sh'
