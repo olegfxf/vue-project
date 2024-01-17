@@ -9,8 +9,8 @@ pipeline {
         parameterizedCron('''
             # leave spaces where you want them around the parameters. They'll be trimmed.
             # we let the build run with the default name
-            */2 * * * * %GREETING=Hola;PLANET=Pluto
-            */3 * * * * %PLANET=Mars
+            #*/2 * * * * %GREETING=Hola;PLANET=Pluto
+            */5 * * * * %PLANET=Mars
         ''')
     }
     options {
@@ -101,7 +101,8 @@ pipeline {
 */        
         stage('Deploy for production') {
             when {
-                branch 'main'  
+                branch 'main'
+                expression { env.PLANET == 'Mars'
             }
             steps {
                 sh './jenkins/scripts/deploy-for-production.sh'
