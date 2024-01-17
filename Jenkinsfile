@@ -1,12 +1,11 @@
-//properties([disableConcurrentBuilds()])
-if (env.BRANCH_NAME == "master") {
-
-    properties([
-        pipelineTriggers([
-            pollSCM("* * * * *")
-        ])
-    ])
-}
+properties([disableConcurrentBuilds()])
+//if (env.BRANCH_NAME == "master") {
+//    properties([
+//        pipelineTriggers([
+//            pollSCM("* * * * *")
+//        ])
+//    ])
+//}
 pipeline {
     agent {
         label 'master'
