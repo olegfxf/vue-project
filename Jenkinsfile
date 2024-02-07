@@ -123,14 +123,17 @@ pipeline {
             }
         }
         stage ('local-ssh'){
-        	sshagent(['ssh_local1']) {
-    			echo "============== start localhost =============="
-    			sh '''
-    			uname -a
+
+	steps {
+	echo "============== start localhost =============="
+  		sshagent(credentials: ['ssh_local1']) {
+    		sh """
+      			uname -a
     			docker login -u vasilvedev -p jsdcCoWq00VvkF9AuL0V
     			docker pull vasilvedev/vue-project:latest
-    			'''
-		}
+    		"""
+  	}
+} 
     	}
 }
 }
