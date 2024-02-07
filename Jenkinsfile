@@ -60,7 +60,7 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
-/*        
+        
         stage("Docker login") {
             when {
                 branch 'main'  
@@ -96,7 +96,7 @@ pipeline {
                 '''
             }
         }
-*/        
+        
         stage('Deploy for production') {
             when {
                 branch 'main'  
