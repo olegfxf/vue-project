@@ -122,8 +122,8 @@ pipeline {
 //                input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }
+        
         stage ('local-ssh'){
-
 	steps {
 	echo "============== start localhost =============="
   		sshagent(credentials: ['ssh_local1']) {
@@ -132,8 +132,8 @@ pipeline {
     			docker login -u vasilvedev -p jsdcCoWq00VvkF9AuL0V
     			docker pull vasilvedev/vue-project:latest
     		"""
-  	}
-} 
+  		}
+	} 
     	}
-}
+    }
 }
