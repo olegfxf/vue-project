@@ -123,7 +123,7 @@ pipeline {
             }
         }
         stage ('local-ssh'){
-        	sshagent(['ssh_local']) {
+        	sshagent(['ssh_local1']) {
     			echo "============== start localhost =============="
     			sh '''
     			uname -a
